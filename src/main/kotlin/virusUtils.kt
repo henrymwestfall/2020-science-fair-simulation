@@ -11,6 +11,23 @@ fun mutate(strain: String): String {
 }
 
 fun determineSimilarity(strainA: String, strainB: String): Double {
-    // TODO
-    return 1.0
+    // find the percent difference between StrainA and StrainB
+
+    // add whitespace if the strains have different sizes
+    var fixedStrainA: String = strainA
+    var fixedStrainB: String = strainB
+    if (strainA.length > strainB.length) {
+        fixedStrainB += " ".repeat(strainA.length - strainB.length)
+    } else if (strainA.length < strainB.length) {
+        fixedStrainA += " ".repeat(strainB.length - strainA.length)
+    }
+
+    val zipped = fixedStrainA.zip(fixedStrainB)
+    var matches = 0
+    for ((charA, charB) in zipped) {
+        if (charA == charB) {
+            matches += 1
+        }
+    }
+    return matches.toDouble() / fixedStrainA.length.toDouble()
 }
