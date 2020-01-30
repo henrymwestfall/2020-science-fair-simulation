@@ -22,7 +22,7 @@ class Individual(var name: Int) {
     // the virus populations
     var contractedStrains = HashMap<String, Int>()
 
-    fun getStatus() {
+    public fun getStatus() {
         // output status and name
         System.out.println("Hello, my name is " + name)
         System.out.println("Health:\t\t" + health)
@@ -31,7 +31,27 @@ class Individual(var name: Int) {
         System.out.println("")
     }
 
-    fun heal() {
+    public fun update() {
+        // run full update cycle
+        heal()
+        useImmuneSystem()
+        increaseVirusPopulations()
+        handleComplications()
+        decreaseHealth()
+        handleDeath()
+    }
+
+    public fun getTotalVirusCount(): Int {
+        // count the total number of viruses in this individual
+        var totalCount = 0
+        for (count in contractedStrains.values) {
+            totalCount += count
+        }
+
+        return totalCount
+    }
+
+    private fun heal() {
         // Increase the health and cap it at the maximum health
         health += healingRate
         if (health > maxHealth) {
@@ -39,11 +59,11 @@ class Individual(var name: Int) {
         }
     }
 
-    fun useImmuneSystem() {
+    private fun useImmuneSystem() {
         // loop through contracted strains
         for ((strain, count) in contractedStrains) {
             // determine the destroy probability
-            val similarity = determineSimilarity(strain, immunity)
+            val similarity: Double = determineSimilarity(strain, immunity)
             var destroyed = 0
             val destroyProbability = similarity * immuneSystemStrength
 
@@ -55,21 +75,21 @@ class Individual(var name: Int) {
             }
 
             // update contracted strains
-            contractedStrains.put(virus, count - destroyed)
+            contractedStrains.put(strain, count - destroyed)
         }
     }
 
-    fun increaseVirusPopulations() {
+    private fun increaseVirusPopulations() {
         // Increase the virus populations in this Individual
 
-        val newViruses = HashMap<String, Int>
+        val newViruses = HashMap<String, Int>()
         // loop through the current viruses
-        for ((strain, count) in contractedStrains) {
+        for (strain in contractedStrains.keys) {
             // possible mutate each virus
             for (i in 0..replicationRate) {
                 val virus = mutate(strain)
                 if (virus in newViruses) {
-                    newViruses.put(virus, newViruses.get(virues) + 1)
+                    newViruses.put(virus, newViruses.get(virus)?:0 + 1)
                 } else {
                     newViruses.put(virus, 1)
                 }
@@ -77,7 +97,25 @@ class Individual(var name: Int) {
         }
 
         contractedStrains = newViruses
+    }
 
+    private fun handleComplications() {
+        // determine if complications are gotten
+        val newComplicationProb = 1.0 - health / maxHealth
+        if (rand.nextDouble() <= newComplicationProb) {
+            complications += 1
+        }
+    }
 
+    private fun decreaseHealth() {
+        // decrease health based on virus count
+        val hmViruses = getTotalVirusCount()
+        health -= hmViruses * virusStrength
+        health -= complications * complicationsStrength
+    }
+
+    private fun handleDeath() {
+        // determine if dead
+        dead = health <= 0
     }
 }
