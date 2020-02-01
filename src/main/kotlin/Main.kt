@@ -1,8 +1,6 @@
 object Main {
     @JvmStatic fun main(args: Array<String>) {
-        val indv = Individual(5)
-        indv.getStatus()
+        val community = Community(1.0)
 
-        val network = Network<Individual>(0.5)
     }
 }

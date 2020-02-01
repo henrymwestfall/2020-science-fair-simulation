@@ -1,8 +1,8 @@
 import java.util.*
 
-val rand = Random(1)
+class Individual(){
+    var id = -1
 
-class Individual(var name: Int) {
     // health settings
     val maxHealth = 100.0;
     val minHealingRate = 5.0;
@@ -22,12 +22,22 @@ class Individual(var name: Int) {
     // the virus populations
     var contractedStrains = HashMap<String, Int>()
 
+    override fun toString() = "$id"
+
+    public fun setID(to: Int) {
+        id = to
+    }
+
+    public fun connect(to: Individual) {
+        neighbors.add(to)
+    }
+
     public fun getStatus() {
         // output status and name
-        System.out.println("Hello, my name is " + name)
-        System.out.println("Health:\t\t" + health)
+        System.out.println("Hello, my name is " + id)
+        System.out.println("Health:\t\t\t" + health)
         System.out.println("Healing Rate:\t\t" + healingRate)
-        System.out.println("Immune System Strenght:\t")
+        System.out.println("Immune System Strength:\t" + immuneSystemStrength)
         System.out.println("")
     }
 
