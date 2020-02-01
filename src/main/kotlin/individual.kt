@@ -24,15 +24,15 @@ class Individual(){
 
     override fun toString() = "$id"
 
-    public fun setID(to: Int) {
+    fun setID(to: Int) {
         id = to
     }
 
-    public fun connect(to: Individual) {
+    fun connect(to: Individual) {
         neighbors.add(to)
     }
 
-    public fun getStatus() {
+    fun getStatus() {
         // output status and name
         System.out.println("Hello, my name is " + id)
         System.out.println("Health:\t\t\t" + health)
@@ -41,7 +41,7 @@ class Individual(){
         System.out.println("")
     }
 
-    public fun update() {
+    fun update() {
         // run full update cycle
         heal()
         useImmuneSystem()
@@ -51,7 +51,7 @@ class Individual(){
         handleDeath()
     }
 
-    public fun getTotalVirusCount(): Int {
+    fun getTotalVirusCount(): Int {
         // count the total number of viruses in this individual
         var totalCount = 0
         for (count in contractedStrains.values) {
