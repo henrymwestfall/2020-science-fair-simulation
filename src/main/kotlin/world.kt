@@ -17,11 +17,19 @@ class World(val connectivity: Double) {
         communities.add(newCommunity)
     }
 
-    fun generateCommunities(count: Int, minConnectivity: Double, maxConnectivity: Double) {
+    fun generateCommunities(count: Int, minConnectivity: Double, maxConnectivity: Double, minPopulation: Int, maxPopulation: Int) {
         for (i in 0..count) {
             val connectivity = minConnectivity + (maxConnectivity - minConnectivity) * rand.nextDouble()
-            val community = Community(connectivity)
+            val population = (minPopulation..maxPopulation).random()
+            val community = Community(connectivity, population)
+            community.generateIndividuals()
             addCommunity(community)
+        }
+    }
+
+    fun update() {
+        for (community in communities) {
+            community.update()
         }
     }
 }

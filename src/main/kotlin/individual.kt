@@ -46,6 +46,7 @@ class Individual(){
         heal()
         useImmuneSystem()
         increaseVirusPopulations()
+        transmit()
         handleComplications()
         decreaseHealth()
         handleDeath()
@@ -107,6 +108,21 @@ class Individual(){
         }
 
         contractedStrains = newViruses
+    }
+
+    private fun transmit() {
+        // randomly select up to 500 viruses to transmit to each neighbor
+        for (neighbor in neighbors) {
+            val transmissionCount = rand.nextInt(500)
+            for (i in 0..transmissionCount) {
+                if (contractedStrains.keys.size > 0) {
+                    val transmittedStrain = contractedStrains.keys.shuffled().elementAt(0)
+                    contractedStrains.set(transmittedStrain, contractedStrains.get(transmittedStrain) ?: 1 - 1)
+                    neighbor.contractedStrains.set(transmittedStrain, neighbor.contractedStrains.get(transmittedStrain)
+                            ?: 0 + 1)
+                }
+            }
+        }
     }
 
     private fun handleComplications() {

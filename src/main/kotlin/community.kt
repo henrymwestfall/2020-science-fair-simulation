@@ -1,6 +1,6 @@
 import java.util.*
 
-class Community(val connectivity: Double) {
+class Community(val connectivity: Double, val population: Int) {
     var id = -1
 
     var nextID = 0
@@ -27,5 +27,18 @@ class Community(val connectivity: Double) {
 
     fun connect(to: Community) {
         neighbors.add(to)
+    }
+
+    fun generateIndividuals() {
+        for (i in 0..population) {
+            val individual = Individual()
+            addIndividual(individual)
+        }
+    }
+
+    fun update() {
+        for (individual in individuals) {
+            individual.update()
+        }
     }
 }
