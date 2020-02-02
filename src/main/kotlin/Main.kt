@@ -1,5 +1,8 @@
 object Main {
     @JvmStatic fun main(args: Array<String>) {
+        System.out.println("Initializing transcription dictionary...")
+        initializeTranscriptionMaps()
+
         System.out.println("Generating world...")
         val world = World(1.0)
         world.generateCommunities(20, 0.0, 1.0, 50, 1000)
