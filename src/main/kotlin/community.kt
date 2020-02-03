@@ -38,7 +38,20 @@ class Community(val connectivity: Double, val population: Int) {
 
     fun update() {
         for (individual in individuals) {
+            if (individual.dead) {
+                continue
+            }
             individual.update()
         }
+    }
+
+    fun getVirusCount(): Int {
+        var count = 0
+        for (individual in individuals) {
+            if (!individual.dead) {
+                count += individual.getTotalVirusCount()
+            }
+        }
+        return count
     }
 }

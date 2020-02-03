@@ -32,4 +32,14 @@ class World(val connectivity: Double) {
             community.update()
         }
     }
+
+    fun introducePathogens(count: Int) {
+        // Infect some individuals randomly
+        for (i in 0..count) {
+            val strain = newStrain()
+            val targetCommunity = communities[rand.nextInt(communities.size - 1)]
+            val targetIndividual = targetCommunity.individuals[rand.nextInt(communities.size - 1)]
+            targetIndividual.contractedStrains.set(strain, 500)
+        }
+    }
 }

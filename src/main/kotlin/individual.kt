@@ -14,7 +14,7 @@ class Individual(){
 
     // status attributes
     var health = maxHealth
-    var immuneSystemStrength = rand.nextDouble()
+    var immuneSystemStrength = (rand.nextInt(25).toDouble() + 70.0) / 100.0
     var immunity = ""
     var complications = 0
     var dead = false
@@ -38,14 +38,15 @@ class Individual(){
         System.out.println("Health:\t\t\t" + health)
         System.out.println("Healing Rate:\t\t" + healingRate)
         System.out.println("Immune System Strength:\t" + immuneSystemStrength)
+        System.out.println("Total viruses:\t\t" + getTotalVirusCount())
         System.out.println("")
     }
 
     fun update() {
         // run full update cycle
         heal()
-        useImmuneSystem()
         increaseVirusPopulations()
+        useImmuneSystem()
         transmit()
         handleComplications()
         decreaseHealth()
@@ -143,5 +144,8 @@ class Individual(){
     private fun handleDeath() {
         // determine if dead
         dead = health <= 0
+        if (dead) {
+            System.out.println(id.toString() + " has died!")
+        }
     }
 }
