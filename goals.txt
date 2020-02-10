@@ -1,0 +1,25 @@
+Wake-up         -       9:00
+
+Chores          -       9:00 - 12:00
+
+Study Bio       -       12:00 - 2:00
+
+Break           -       2:00 - 3:00
+
+Finish virus
+encode/decode/
+compare         -       3:00 - 4:30
+
+Write Kotlin
+K-Means         -       4:30 - 5:00
+
+Break           -       5:00 - 6:00
+
+Write JSON
+system          -       7:00 - 7:30
+
+Write ANN       -       7:30 - 8:00
+
+Write dataset
+generator       -       8:00 - 8:30
+

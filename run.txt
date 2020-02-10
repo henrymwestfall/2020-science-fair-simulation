@@ -1,0 +1,1073 @@
+> Task :run
+Initializing transcription dictionary...
+Generating world...
+Introducing virus...
+Beginning simulation...
+Epoch 1 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 154
+
+Epoch 2 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 263
+
+Epoch 3 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 252
+
+Epoch 4 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 293
+
+Epoch 5 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 405
+
+Epoch 6 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 756
+
+Epoch 7 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 1292
+
+72 has died!
+16 has died!
+66 has died!
+Epoch 8 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 2370
+
+71 has died!
+92 has died!
+6 has died!
+8 has died!
+54 has died!
+53 has died!
+14 has died!
+23 has died!
+26 has died!
+29 has died!
+69 has died!
+88 has died!
+2 has died!
+11 has died!
+57 has died!
+62 has died!
+83 has died!
+4 has died!
+35 has died!
+42 has died!
+67 has died!
+74 has died!
+15 has died!
+79 has died!
+85 has died!
+12 has died!
+31 has died!
+48 has died!
+65 has died!
+9 has died!
+10 has died!
+13 has died!
+28 has died!
+50 has died!
+68 has died!
+73 has died!
+89 has died!
+47 has died!
+63 has died!
+Epoch 9 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 2421
+
+33 has died!
+52 has died!
+38 has died!
+17 has died!
+20 has died!
+24 has died!
+34 has died!
+39 has died!
+55 has died!
+1 has died!
+32 has died!
+38 has died!
+49 has died!
+84 has died!
+90 has died!
+3 has died!
+44 has died!
+64 has died!
+87 has died!
+22 has died!
+25 has died!
+27 has died!
+30 has died!
+58 has died!
+60 has died!
+70 has died!
+40 has died!
+56 has died!
+77 has died!
+81 has died!
+3 has died!
+19 has died!
+41 has died!
+46 has died!
+76 has died!
+7 has died!
+7 has died!
+37 has died!
+51 has died!
+86 has died!
+93 has died!
+44 has died!
+18 has died!
+59 has died!
+61 has died!
+78 has died!
+80 has died!
+Epoch 10 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 1321
+
+0 has died!
+48 has died!
+75 has died!
+6 has died!
+13 has died!
+21 has died!
+43 has died!
+22 has died!
+82 has died!
+10 has died!
+24 has died!
+36 has died!
+42 has died!
+57 has died!
+40 has died!
+45 has died!
+4 has died!
+14 has died!
+45 has died!
+91 has died!
+Epoch 11 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 1239
+
+41 has died!
+43 has died!
+20 has died!
+17 has died!
+27 has died!
+34 has died!
+35 has died!
+8 has died!
+9 has died!
+29 has died!
+5 has died!
+26 has died!
+32 has died!
+56 has died!
+2 has died!
+25 has died!
+30 has died!
+50 has died!
+31 has died!
+46 has died!
+58 has died!
+49 has died!
+52 has died!
+59 has died!
+0 has died!
+5 has died!
+11 has died!
+15 has died!
+16 has died!
+36 has died!
+Epoch 12 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 543
+
+18 has died!
+23 has died!
+39 has died!
+47 has died!
+51 has died!
+1 has died!
+12 has died!
+54 has died!
+55 has died!
+21 has died!
+28 has died!
+19 has died!
+53 has died!
+37 has died!
+Epoch 13 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 38
+
+33 has died!
+Epoch 14 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 15 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 16 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 17 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 18 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 19 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 20 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 21 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 22 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 23 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 24 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 25 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 26 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 27 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 28 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 29 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 30 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 31 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 32 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 33 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 34 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 35 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 36 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 37 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 38 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 39 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 40 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 41 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 42 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 43 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 44 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 45 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 46 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 47 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 48 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 49 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 50 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 51 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 52 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 53 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 54 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 55 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 56 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 57 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 58 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 59 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 60 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 61 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 62 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 63 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 64 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 65 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 66 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 67 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 68 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 69 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 70 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 71 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 72 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 73 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 74 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 75 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 76 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 77 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 78 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 79 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 80 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 81 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 82 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 83 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 84 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 85 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 86 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 87 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 88 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 89 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 90 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 91 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 92 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 93 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 94 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 95 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 96 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 97 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 98 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 99 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 100 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Epoch 101 complete
+Hello, my name is 0
+Health:                 100.0
+Healing Rate:           9.100808114922017
+Immune System Strength: 0.74
+Total viruses:          0
+
+Total viruses (world): 0
+
+Remaining population: 487
+
+BUILD SUCCESSFUL in 12h 20m 51s
+2 actionable tasks: 2 executed
+

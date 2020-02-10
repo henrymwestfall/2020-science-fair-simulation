@@ -8,6 +8,7 @@ class Individual(){
     val minHealingRate = 5.0;
     val maxHealingRate = 15.0;
     val healingRate = minHealingRate + (maxHealingRate - minHealingRate) * rand.nextDouble()
+    val vulnerability = ""
 
     // a list of this individual's neighbors
     val neighbors = mutableListOf<Individual>()
@@ -88,6 +89,9 @@ class Individual(){
 
             // update contracted strains
             contractedStrains.put(strain, count - destroyed)
+
+            // update immunity
+
         }
     }
 
@@ -97,13 +101,12 @@ class Individual(){
         val newViruses = HashMap<String, Int>()
         // loop through the current viruses
         for (strain in contractedStrains.keys) {
-            // possible mutate each virus
+            // possibly mutate each virus considering similarity
+            val similarity = determineSimilarity(strain, vulnerability)
             for (i in 0..replicationRate) {
-                val virus = mutate(strain)
-                if (virus in newViruses) {
-                    newViruses.put(virus, newViruses.get(virus)?:0 + 1)
-                } else {
-                    newViruses.put(virus, 1)
+                if (rand.nextDouble() <= similarity) {
+                    val virus = mutate(strain)
+                    newViruses.put(virus, newViruses.get(virus) ?: 0 + 1)
                 }
             }
         }

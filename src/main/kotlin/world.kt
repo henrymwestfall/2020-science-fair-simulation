@@ -33,6 +33,14 @@ class World(val connectivity: Double) {
         }
     }
 
+    fun getVirusCount(): Int {
+        var count = 0
+        for (community in communities) {
+            count += community.getVirusCount()
+        }
+        return count
+    }
+
     fun introducePathogens(count: Int) {
         // Infect some individuals randomly
         for (i in 0..count) {
