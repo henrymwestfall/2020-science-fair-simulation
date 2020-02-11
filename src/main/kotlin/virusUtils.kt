@@ -23,6 +23,33 @@ val oddNumbers = sequence {
     }
 }
 
+fun getFactors(num: Int): MutableList<Int> {
+    /** return the factors of num **/
+    val factors = mutableListOf<Int>()
+    if (num < 1) {
+        return factors
+    }
+
+    (1..(num / 2).toInt())
+            .filter { num % it == 0 }
+            .forEach { factors.add(it) }
+    factors.add(num)
+    return factors
+}
+
+fun getPrimeNumbers(count: Int): MutableList<Int> {
+    /** return a list of the first 'count' prime numbers **/
+    val primes = mutableListOf<Int>()
+    var num = 0
+    while (primes.size < count) {
+        if (getFactors(num).size == 2) { // 2 factors, one is 1 and the other is num
+            primes.add(num)
+        }
+        ++num
+    }
+    return primes
+}
+
 /*
 val layerRange = 1..numberOfLayers
 val secondPart = layerRange.toList().map {
