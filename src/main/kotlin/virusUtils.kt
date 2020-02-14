@@ -1,27 +1,57 @@
 import java.util.*
+import kotlin.math.*
 
 // replication and strength settings
 val replicationRate = 100
-val virusStrength = 0.5
-val complicationsStrength = 10.0
-val mutationRate = 0.000006
-val baseStrainLength = 10//50
+val virusStrength = 0.01
+val complicationsStrength = 5.0
+val mutationRate = 0.1
+val baseStrainLength = 500
+val maxStrainLength = 550
+val bindThreshold = 0.50
 
 // encoder/decoder settings
-val numberOfFeatures = 6
-val numberOfMonomers = 4
-val bins = mutableListOf<MutableList<Int>>()
+val numberOfFeatures = 10
+val bins = mutableListOf<MutableList<Int>>() // tells which feature each index goes to
 
-val oddNumbers = sequence {
-    var i = 1
-    while (true) {
-        if (i % 2 == 0) { // is even
-            ++i
-        } else {
-            yield(i++)
-        }
+// transcription maps
+val monomers = listOf("A", "C", "T", "G")
+val transcriptToIntMap = HashMap<String, Int>()
+val transcriptToStringMap = HashMap<Int, String>()
+
+
+fun initializeTranscriptionMaps() {
+    val values = getPrimeNumbers(monomers.size)
+    monomers.forEachIndexed { i, monomer ->
+        transcriptToIntMap.set(monomer, values[i])
+        transcriptToStringMap.set(values[i], monomer)
     }
 }
+
+
+fun initializeIndexBins() {
+    for (i in 0..numberOfFeatures-1) {
+        val bin = mutableListOf<Int>()
+        bins.add(bin)
+    }
+
+    for (i in 0..baseStrainLength-1) {
+        val binIndex = i % numberOfFeatures
+        bins[binIndex].add(i)
+    }
+}
+
+
+fun newStrain(): String {
+    // Create a random new polymer
+    var strain = ""
+    for (i in 0..baseStrainLength-1) {
+        strain += monomers[rand.nextInt(monomers.size)]
+    }
+    return strain
+}
+
+val universalVulnerability = newStrain()
 
 fun getFactors(num: Int): MutableList<Int> {
     /** return the factors of num **/
@@ -38,11 +68,13 @@ fun getFactors(num: Int): MutableList<Int> {
     return factors
 }
 
+
 fun getPrimeFactorization(num: Int, debug: Boolean=false): MutableList<Int> {
     val factorization = mutableListOf<Int>()
     primeFactorizationHelper(num, factorization, 0, debug)
     return factorization
 }
+
 
 fun primeFactorizationHelper(num: Int, factorization: MutableList<Int>, tabs: Int, debug: Boolean) {
     val factors = getFactors(num)
@@ -67,6 +99,7 @@ fun primeFactorizationHelper(num: Int, factorization: MutableList<Int>, tabs: In
     }
 }
 
+
 fun getPrimeNumbers(count: Int): MutableList<Int> {
     /** return a list of the first 'count' prime numbers **/
     val primes = mutableListOf<Int>()
@@ -80,7 +113,29 @@ fun getPrimeNumbers(count: Int): MutableList<Int> {
     return primes
 }
 
-fun encodeSequence(sequence: String): List<Int> {
+
+fun transcribeToString(inputIntList: MutableList<Int>): String {
+    var output = ""
+    for (integer in inputIntList) {
+        output += transcriptToStringMap.get(integer)?:""
+    }
+    return output
+}
+
+
+fun transcribeToInt(inputString: String): MutableList<Int> {
+    var output = mutableListOf<Int>()
+    for (monomer in inputString.split("")) {
+        val integer = transcriptToIntMap.get(monomer)?:0
+        if (integer in transcriptToIntMap.values) {
+            output.add(integer)
+        }
+    }
+    return output
+}
+
+
+fun encodeSequence(sequence: String): List<Double> {
     /** encode a sequence to its feature vector
      * 1. loop through each bin of indices
      * 2. for each bin, take the product of the monomers at each index
@@ -89,31 +144,32 @@ fun encodeSequence(sequence: String): List<Int> {
 
     val transcribedSequence = transcribeToInt(sequence)
 
-    System.out.println(transcribedSequence)
+    //System.out.println(transcribedSequence)
 
-    val features = mutableListOf<Int>()
+    val features = mutableListOf<Double>()
 
     bins.forEach { bin ->
-        var product = 1
+        var sum = 0
         bin.forEach { index ->
             if (index <= transcribedSequence.size - 1) {
-                product = product * transcribedSequence.get(index)
+                sum += transcribedSequence.get(index)
             }
         }
-        features.add(product)
+        features.add(sum.toDouble() / bin.size.toDouble())
     }
 
     return features.toList()
 }
 
-fun decodeSequence2(features: List<Int>): String {
+
+fun decodeSequence(features: List<Int>): String {
     //System.out.println("2!")
     val decodedSeqMap = HashMap<Int, Int>()
 
     bins.forEachIndexed { i, bin ->
         val factors = getPrimeFactorization(features[i]).filter { it != 1 }
         bin.forEachIndexed { j, index ->
-            decodedSeqMap.set(index, factors[j])
+            decodedSeqMap.put(index, factors[j])
         }
     }
 
@@ -128,87 +184,6 @@ fun decodeSequence2(features: List<Int>): String {
     return decodedSequenceAsString
 }
 
-fun decodeSequence(features: List<Int>): String {
-    /** decode a feature vector to its sequence
-     *  1. factor each feature to get bin values
-     *  2. order the bin values
-     * **/
-
-    val decodedSequenceAsMap = HashMap<Int, Int>() // index : value
-
-    features.forEachIndexed { index, feature ->
-        val factors = getFactors(feature)
-        val selectedBin = bins[index] // the bin contains indices
-
-        // for each sequence index in the index bin, set the factors equal
-        selectedBin.forEachIndexed { indexInBin, indexInSequence ->
-            val selectedFactor = factors[indexInBin]
-            decodedSequenceAsMap.set(indexInSequence, selectedFactor)
-        }
-    }
-
-    // turn the map into a string
-    val decodedSequenceAsInts = decodedSequenceAsMap.entries
-            .sortedBy { entry -> entry.key }
-            .map { entry -> entry.value }
-            .toMutableList()
-    val decodedSequenceAsString = transcribeToString(decodedSequenceAsInts)
-
-    return decodedSequenceAsString
-}
-
-/*
-val layerRange = 1..numberOfLayers
-val secondPart = layerRange.toList().map {
-    Math.pow(layerGrowthRate, oddNumbers.take(1).toList()[0].toDouble())
-}.sum()
-val numberOfWeights = Math.pow(encodingLength.toDouble(), 2.0) /*
-fun encodeStrain(strain: String): MutableList<Double> {
-    // Encode a strain to its feature vector
-    return mutableListOf<Double>()
-}
-
-fun decodeVector(vector: MutableList<Double>): String {
-    // Decode a feature vector to its strain
-    return ""
-}* layerRange.toList().map {
-    Math.pow(layerGrowthRate, oddNumbers.take(1).toList()[0].toDouble())
-}).sum*/
-*/
-
-// transcription maps
-val monomers = listOf("A", "C", "T", "G")
-val transcriptToIntMap = HashMap<String, Int>()
-val transcriptToStringMap = HashMap<Int, String>()
-
-fun initializeTranscriptionMaps() {
-    val values = getPrimeNumbers(monomers.size)
-    monomers.forEachIndexed { i, monomer ->
-        transcriptToIntMap.set(monomer, values[i])
-        transcriptToStringMap.set(values[i], monomer)
-    }
-}
-
-fun initializeIndexBins() {
-    for (i in 0..numberOfFeatures-1) {
-        val bin = mutableListOf<Int>()
-        bins.add(bin)
-    }
-
-    for (i in 0..baseStrainLength-1) {
-        val binIndex = i % numberOfFeatures
-        bins[binIndex].add(i)
-    }
-}
-
-fun newStrain(): String {
-    // Create a random new polymer
-    var strain = ""
-    for (i in 0..baseStrainLength-1) {
-        strain += monomers[rand.nextInt(monomers.size)]
-    }
-    return strain
-}
 
 fun mutate(strain: String): String {
     val mutates = rand.nextDouble() <= mutationRate
@@ -217,7 +192,10 @@ fun mutate(strain: String): String {
         val newStrain = mutableListOf<String>()
         for (monomer in splitStrain) {
             var addedMonomer = monomer
-            val type = listOf("insertion", "deletion", "change")[rand.nextInt(2)] // choose a random mutation type
+            var type = listOf("insertion", "deletion", "change")[rand.nextInt(2)] // choose a random mutation type
+            if (type == "insertion"&& strain.length == maxStrainLength) {
+               type = "deletion"
+            }
             if (type == "insertion") {
                 // insert before this monomer
                 newStrain.add(monomers[rand.nextInt(monomers.size)])
@@ -236,7 +214,25 @@ fun mutate(strain: String): String {
     return strain
 }
 
-fun determineSimilarity(strainA: String, strainB: String): Double {
+
+fun sigmoid(x: Double): Double {
+    return 1.0 / (1.0 + exp(-x))
+}
+
+
+fun determineSimilarity(strainAEncoding: List<Double>, strainBEncoding: List<Double>): Double {
+    var sumDifference = 0.0
+    strainAEncoding.zip(strainBEncoding).forEach { (featureA, featureB) ->
+        sumDifference += featureA - featureB
+    }
+
+    return 1.0 - (sumDifference / monomers.size.toDouble())
+
+
+}
+
+
+fun getHammingDistance(strainA: String, strainB: String): Double {
     // find the percent difference between StrainA and StrainB
 
     // add whitespace if the strains have different sizes
@@ -256,23 +252,4 @@ fun determineSimilarity(strainA: String, strainB: String): Double {
         }
     }
     return matches.toDouble() / fixedStrainA.length.toDouble()
-}
-
-fun transcribeToString(inputIntList: MutableList<Int>): String {
-    var output = ""
-    for (integer in inputIntList) {
-        output += transcriptToStringMap.get(integer)?:""
-    }
-    return output
-}
-
-fun transcribeToInt(inputString: String): MutableList<Int> {
-    var output = mutableListOf<Int>()
-    for (monomer in inputString.split("")) {
-        val integer = transcriptToIntMap.get(monomer)?:0
-        if (integer in transcriptToIntMap.values) {
-            output.add(integer)
-        }
-    }
-    return output
 }
