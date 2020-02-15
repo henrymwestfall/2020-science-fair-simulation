@@ -5,8 +5,8 @@ class Individual(){
 
     // health settings
     val maxHealth = 100.0;
-    val minHealingRate = 5.0;
-    val maxHealingRate = 15.0;
+    val minHealingRate = 1.0;
+    val maxHealingRate = 5.0;
     val healingRate = minHealingRate + (maxHealingRate - minHealingRate) * rand.nextDouble()
     val vulnerability = universalVulnerability
 
@@ -15,7 +15,7 @@ class Individual(){
 
     // status attributes
     var health = maxHealth
-    var immuneSystemStrength = (rand.nextInt(250).toDouble() / 100.0 + 70.0) / 100.0
+    var immuneSystemStrength = (rand.nextInt(60) + 30).toDouble() / 100.0
     var immunity = mutableListOf<Double>()//(1..numberOfFeatures).toMutableList()
     val antibodies = HashMap<String, Int>()
     var complications = 0
@@ -24,7 +24,7 @@ class Individual(){
     // the virus populations
     var contractedStrains = HashMap<String, Int>()
 
-    fun init() {
+    init {
         for (i in (1..numberOfFeatures)) {
             immunity.add(0.0)
         }
@@ -58,13 +58,15 @@ class Individual(){
 
     fun update() {
         // run full update cycle
-        heal()
-        increaseVirusPopulations()
-        useImmuneSystem()
-        transmit()
-        handleComplications()
-        decreaseHealth()
-        handleDeath()
+        if (!dead) {
+            heal()
+            increaseVirusPopulations()
+            useImmuneSystem()
+            transmit()
+            handleComplications()
+            decreaseHealth()
+            handleDeath()
+        }
     }
 
     fun getTotalVirusCount(): Int {
@@ -90,27 +92,21 @@ class Individual(){
         for ((strain, count) in contractedStrains) {
             // determine the destroy probability
             val encoding = encodeSequence(strain)
-            val similarity = determineSimilarity(encoding, immunity.toList())
-            var destroyed = 0
-            val destroyProbability = similarity //* immuneSystemStrength
+            val immunityList = immunity.toList()
+            val similarity = determineSimilarity(encoding, immunityList)
 
-            // randomly destroy some of the viruses
-            for (i in 1..count) {
-                if (rand.nextDouble() <= destroyProbability) {
-                    destroyed += 1
-                }
-            }
+            val destroyed = (similarity * count).toInt()
 
             // update contracted strains
             contractedStrains.put(strain, count - destroyed)
 
             // update immunity
-            /*
+
             val featureToChange = rand.nextInt(numberOfFeatures)
-            immunity.zip(encoding).forEachIndexed(({ index, (feature, foreignFeature) ->
-                val error = feature - foreignFeature
-                immunity.set(index, (immunity[index] + error * 0.0).toInt())
-            }))*/
+            (immunity zip encoding).forEachIndexed(({ index, (feature, foreignFeature) ->
+                val error: Double = foreignFeature - feature
+                immunity.set(index, immunity[index] + error * immuneSystemStrength)
+            }))
         }
     }
 
@@ -152,7 +148,7 @@ class Individual(){
 
     fun handleComplications() {
         // determine if complications are gotten
-        val newComplicationProb = (1.0 - health / maxHealth) * 0.33
+        val newComplicationProb = getTotalVirusCount() / complicationDeveloplmentDenominator
         if (rand.nextDouble() <= newComplicationProb) {
             complications += 1
         }
@@ -169,7 +165,7 @@ class Individual(){
         // determine if dead
         dead = health <= 0
         if (dead) {
-            System.out.println(id.toString() + " has died!")
+            //System.out.println(id.toString() + " has died!")
         }
     }
 }

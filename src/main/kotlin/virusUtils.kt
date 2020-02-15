@@ -2,10 +2,11 @@ import java.util.*
 import kotlin.math.*
 
 // replication and strength settings
-val replicationRate = 100
-val virusStrength = 0.01
-val complicationsStrength = 5.0
-val mutationRate = 0.1
+val replicationRate = 10
+val virusStrength = 0.005
+val complicationsStrength = 6.0
+val complicationDeveloplmentDenominator = 10000.0
+val mutationRate = 0.00001
 val baseStrainLength = 500
 val maxStrainLength = 550
 val bindThreshold = 0.50
@@ -185,49 +186,53 @@ fun decodeSequence(features: List<Int>): String {
 }
 
 
-fun mutate(strain: String): String {
+fun mutate(strain: String, force: Boolean = false): String {
     val mutates = rand.nextDouble() <= mutationRate
-    if (mutates) {
-        val splitStrain = strain.split("")
-        val newStrain = mutableListOf<String>()
-        for (monomer in splitStrain) {
-            var addedMonomer = monomer
-            var type = listOf("insertion", "deletion", "change")[rand.nextInt(2)] // choose a random mutation type
-            if (type == "insertion"&& strain.length == maxStrainLength) {
-               type = "deletion"
-            }
-            if (type == "insertion") {
-                // insert before this monomer
-                newStrain.add(monomers[rand.nextInt(monomers.size)])
-            } else if (type == "deletion") {
-                // delete this monomer
-                addedMonomer = ""
-            } else if (type == "change") {
-                // change this monomer randomly
-                addedMonomer = monomers[rand.nextInt(monomers.size)]
-            }
 
-            newStrain.add(addedMonomer)
+    if (mutates || force) {
+        val splitStrain = strain.split("").toMutableList()
+        val index = rand.nextInt(strain.length - 1)
+        var type = listOf("insertion", "deletion", "change")[rand.nextInt(2)] // choose a random mutation type
+
+        if (type == "insertion" && strain.length == maxStrainLength) {
+            type = "deletion"
         }
-        return newStrain.joinToString()
+        if (type == "insertion") {
+            // insert at this index
+            splitStrain.add(index, monomers[rand.nextInt(monomers.size - 1)])
+        } else if (type == "deletion") {
+            // delete this monomer
+            splitStrain.removeAt(index)
+        } else if (type == "change") {
+            // change this monomer randomly
+            splitStrain.set(index, monomers[rand.nextInt(monomers.size - 1)])
+        }
+
+        return splitStrain.joinToString("")
     }
+
     return strain
 }
 
 
-fun sigmoid(x: Double): Double {
-    return 1.0 / (1.0 + exp(-x))
+fun getSimilarityFromRawDifference(x: Double): Double {
+    val mc: Double = (monomers.size * numberOfFeatures).toDouble()
+    val horizontalStretch: Double = (8.0 * ln(3.0)) / mc
+    val similarityOutOf100: Double = 100.0 * (1.0 / (1.0 + exp(horizontalStretch * (x - mc / 2.0))))
+    return similarityOutOf100 / 100.0
 }
 
 
-fun determineSimilarity(strainAEncoding: List<Double>, strainBEncoding: List<Double>): Double {
+fun determineSimilarity(strainAEncoding: List<Double>, strainBEncoding: List<Double>, doPrint: Boolean = false): Double {
     var sumDifference = 0.0
-    strainAEncoding.zip(strainBEncoding).forEach { (featureA, featureB) ->
-        sumDifference += featureA - featureB
+    (strainAEncoding zip strainBEncoding).forEach { (featureA, featureB) ->
+        sumDifference += abs(featureA - featureB)
     }
-
-    return 1.0 - (sumDifference / monomers.size.toDouble())
-
+    if (sumDifference != 0.0 && doPrint) {
+        System.out.println(sumDifference)
+    }
+    //return 1.0 - (sumDifference / monomers.size.toDouble())
+    return getSimilarityFromRawDifference(sumDifference)
 
 }
 
