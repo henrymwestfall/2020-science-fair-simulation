@@ -5,27 +5,28 @@ object TestIndividual {
         initializeIndexBins()
         initializeTranscriptionMaps()
 
-        val focus = 1 // ID of individual to follow
+        val focus = 79 // ID of individual to follow
 
         System.out.println("Creating virus...")
-        var strain = universalVulnerability
-        for (i in 0..10) {
-            strain = mutate(strain, true)
-        }
+        val strainAsMutableList = newStrain().slice(0..bindSiteLength).split("").toMutableList()
+        strainAsMutableList.addAll(0, universalVulnerability.split(""))
+        val strain = strainAsMutableList.joinToString("")
         //val strain = newStrain()
 
         System.out.println("Running tests...")
         var dead = 0
-        for (trial in (1..100)) {
+        val trials = 100
+        val trialLength = 365 * 10
+        for (trial in (1..trials)) {
             val individual = Individual()
             individual.setID(trial)
 
-            individual.contractedStrains.set(strain, 10)
+            individual.contractedStrains.set(strain, 1)
 
             var i = 0
             var lastHealth = 101.0
             //while (individual.getTotalVirusCount() > 0 && !(individual.health < 0.0)) {
-            while (!individual.dead && individual.getTotalVirusCount() > 0 && i <= 365) {
+            while (!individual.dead && individual.getTotalVirusCount() > 0 && i <= trialLength - 1) {
                 if (individual.id == focus) {
                     System.out.println("Day $i")
                     individual.getStatus()
@@ -38,13 +39,13 @@ object TestIndividual {
             System.out.println("Day $i")
             individual.getStatus()
 
-            if (individual.dead) {
+            if (lastHealth > individual.health || individual.dead) {//(individual.dead) {
                 dead += 1
             }
 
             System.gc()
         }
 
-        System.out.println("\nFailures per 100: $dead")
+        System.out.println("\nFailures: $dead / $trials")
     }
 }

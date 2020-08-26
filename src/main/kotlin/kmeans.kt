@@ -6,7 +6,7 @@ fun calculateDistance(a: List<Double>, b: List<Double>): Double {
     val differences = (0..a.size-1).toList().map { a[it] - b[it] }
     val squares = differences.map { it * it }
     val sum = squares.sum()
-    return sqrt(sum)
+    return sum//sqrt(sum)
 }
 
 fun calculateCentroid(dimensions: Int, points: List<List<Double>>): List<Double> {
@@ -107,6 +107,53 @@ fun kmeans(dimensions: Int, clusters: Int, input: List<List<Double>>, iterations
     val centroidsAndClusterSizes = HashMap<List<Double>, Int>()
     for ((centroid, group) in centroids zip groups) {
         centroidsAndClusterSizes.set(centroid, group.size)
+    }
+
+    return centroidsAndClusterSizes
+}
+
+
+fun onlineKMeans(dimensions: Int, k: Int, input: HashMap<String, Long>): HashMap<MutableList<Double>, Long> {
+    val centroids = mutableListOf<MutableList<Double>>()
+
+    for (i in 0 until k) {
+        val centroid = (0 until dimensions).toList().map { rand.nextInt(3 * k).toDouble() }.toMutableList() // random initial centroids
+        centroids.add(centroid)
+    }
+
+    val clusters = (0 until k).toList().map { mutableListOf<List<Double>>() }
+
+    input.entries.forEach({ (strainString, count) ->
+        val strain = encodeSequence(strainString)
+
+        var closest = centroids.first()
+        var closestIndex = 0
+        var shortestDistance = POSITIVE_INFINITY
+        centroids.forEachIndexed({ index, centroid ->
+            val distance = calculateDistance(centroid, strain)
+            if (distance < shortestDistance) {
+                shortestDistance = distance
+                closest = centroid
+                closestIndex = index
+            }
+        })
+
+        for (i in 0 until count) {
+            clusters[closestIndex].add(strain)
+            val cluster = clusters[closestIndex]
+
+            closest.forEachIndexed({ index, coord ->
+                val new = coord + 1.0 / cluster.size.toDouble() * (strain[index] - coord)
+                closest.set(index, new)
+            })
+
+            centroids.set(closestIndex, closest)
+        }
+    })
+
+    val centroidsAndClusterSizes = HashMap<MutableList<Double>, Long>()
+    for ((centroid, cluster) in centroids zip clusters) {
+        centroidsAndClusterSizes.set(centroid, cluster.size.toLong())
     }
 
     return centroidsAndClusterSizes

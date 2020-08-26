@@ -2,14 +2,16 @@ import java.util.*
 import kotlin.math.*
 
 // replication and strength settings
-val replicationRate = 10
-val virusStrength = 0.005
-val complicationsStrength = 6.0
+val replicationRate = 30
+var sqrtReplicationRate = 0//sqrt(replicationRate).roundToInt()
+val virusStrength = 0.0
+val complicationsStrength = 8.0
 val complicationDeveloplmentDenominator = 10000.0
 val mutationRate = 0.00001
 val baseStrainLength = 500
 val maxStrainLength = 550
 val bindThreshold = 0.50
+val bindSiteLength = (baseStrainLength * 0.05).toInt()
 
 // encoder/decoder settings
 val numberOfFeatures = 10
@@ -19,6 +21,13 @@ val bins = mutableListOf<MutableList<Int>>() // tells which feature each index g
 val monomers = listOf("A", "C", "T", "G")
 val transcriptToIntMap = HashMap<String, Int>()
 val transcriptToStringMap = HashMap<Int, String>()
+
+
+fun initialize() {
+    initializeTranscriptionMaps()
+    initializeIndexBins()
+    sqrtReplicationRate = sqrt(replicationRate.toDouble()).roundToInt()
+}
 
 
 fun initializeTranscriptionMaps() {
@@ -52,7 +61,7 @@ fun newStrain(): String {
     return strain
 }
 
-val universalVulnerability = newStrain()
+val universalVulnerability = newStrain().slice(0..bindSiteLength)
 
 fun getFactors(num: Int): MutableList<Int> {
     /** return the factors of num **/
@@ -218,12 +227,15 @@ fun mutate(strain: String, force: Boolean = false): String {
 fun getSimilarityFromRawDifference(x: Double): Double {
     val mc: Double = (monomers.size * numberOfFeatures).toDouble()
     val horizontalStretch: Double = (8.0 * ln(3.0)) / mc
-    val similarityOutOf100: Double = 100.0 * (1.0 / (1.0 + exp(horizontalStretch * (x - mc / 2.0))))
+    var similarityOutOf100: Double = 100.0 * (1.0 / (1.0 + exp(horizontalStretch * (x - mc / 2.0))))
+    if (similarityOutOf100 >= 98.0) {
+        similarityOutOf100 = 100.0
+    }
     return similarityOutOf100 / 100.0
 }
 
 
-fun determineSimilarity(strainAEncoding: List<Double>, strainBEncoding: List<Double>, doPrint: Boolean = false): Double {
+fun determineSimilarity1(strainAEncoding: List<Double>, strainBEncoding: List<Double>, doPrint: Boolean = false): Double {
     var sumDifference = 0.0
     (strainAEncoding zip strainBEncoding).forEach { (featureA, featureB) ->
         sumDifference += abs(featureA - featureB)
@@ -234,6 +246,20 @@ fun determineSimilarity(strainAEncoding: List<Double>, strainBEncoding: List<Dou
     //return 1.0 - (sumDifference / monomers.size.toDouble())
     return getSimilarityFromRawDifference(sumDifference)
 
+}
+
+
+fun determineSimilarity(strainAEncoding: List<Double>, strainBEncoding: List<Double>, doPrint: Boolean = false): Double {
+    var numberOfDifferences = 0.0
+    val length = strainAEncoding.size.toDouble()
+    (strainAEncoding zip strainBEncoding).forEach({ (featureA, featureB) ->
+        if ((featureA - featureB).absoluteValue > 0.1) {
+            numberOfDifferences += 1.0
+        }
+    })
+    assert(length != 0.0 && numberOfDifferences != 0.0)
+    val returnValue = 1.0 - numberOfDifferences / length
+    return returnValue
 }
 
 

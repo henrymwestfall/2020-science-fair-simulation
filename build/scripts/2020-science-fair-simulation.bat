@@ -66,7 +66,7 @@ set CMD_LINE_ARGS=%*
 set CLASSPATH=%APP_HOME%\lib\2020-science-fair-simulation.jar;%APP_HOME%\lib\kotlin-stdlib-jdk8-1.3.61.jar;%APP_HOME%\lib\kotlin-stdlib-jdk7-1.3.61.jar;%APP_HOME%\lib\kotlin-stdlib-1.3.61.jar;%APP_HOME%\lib\kotlin-stdlib-common-1.3.61.jar;%APP_HOME%\lib\annotations-13.0.jar
 
 @rem Execute 2020-science-fair-simulation
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %2020_SCIENCE_FAIR_SIMULATION_OPTS%  -classpath "%CLASSPATH%" TestIndividual %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %2020_SCIENCE_FAIR_SIMULATION_OPTS%  -classpath "%CLASSPATH%" Main %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell

@@ -3,6 +3,7 @@ import java.util.*
 class World(val connectivity: Double) {
     var nextID = 0
     val communities = mutableListOf<Community>()
+    val viruses = HashMap<String, Long>()
 
     fun addCommunity(newCommunity: Community) {
         // maybe connect to other communities
@@ -30,24 +31,39 @@ class World(val connectivity: Double) {
     fun update() {
         for (community in communities) {
             community.update()
+            viruses.clear()
+            community.viruses.entries.forEach({ (strain, count) ->
+                viruses.set(strain, (viruses.get(strain) ?: 0) + count)
+            })
         }
     }
 
-    fun getVirusCount(): Int {
-        var count = 0
+    fun getVirusCount(): List<Long> {
+        var count = 0L
+        var strains = 0L
         for (community in communities) {
-            count += community.getVirusCount()
+            val counts = community.getVirusCount()
+            strains += counts[0]
+            count += counts[1]
         }
-        return count
+        return listOf(strains, count)
+    }
+
+    fun getPopulation(): Int {
+        var population = 0
+        communities.forEach({ community ->
+            population += community.getLivingPopulation()
+        })
+        return population
     }
 
     fun introducePathogens(count: Int) {
         // Infect some individuals randomly
         for (i in 0..count) {
-            val strain = newStrain()
+            val strain = universalVulnerability
             val targetCommunity = communities[rand.nextInt(communities.size - 1)]
             val targetIndividual = targetCommunity.individuals[rand.nextInt(communities.size - 1)]
-            targetIndividual.contractedStrains.set(strain, 500)
+            targetIndividual.contractedStrains.set(strain, 10)
         }
     }
 }
